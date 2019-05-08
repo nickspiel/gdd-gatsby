@@ -67,16 +67,15 @@ function SEO({ description, lang, meta, keywords, title }) {
           name: `twitter:description`,
           content: metaDescription,
         },
+        {
+          name: `viewport`,
+          content: `initial-scale=1.0, width=device-width`,
+        },
       ]
-        .concat(
-          keywords.length > 0
-            ? {
-                name: `keywords`,
-                content: keywords.join(`, `),
-              }
-            : []
-        )
         .concat(meta)}
+      link={[
+        { rel: `icon`, type: `image/x-icon`, href: `/images/favicon.ico` }
+      ]}
     />
   )
 }
