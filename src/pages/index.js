@@ -27,8 +27,8 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  img {
-    max-width: 100%;
+  button {
+    cursor: pointer;
   }
 `
 
