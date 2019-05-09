@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 
 const Button = styled.button`
   padding: 0.5rem;
-  margin: 0 0.5rem;
+  margin: 0.5rem;
   font-size: inherit;
   border: solid 1px #74FAA2;
   box-shadow: 2px 2px 0 0 #74FAA2;
