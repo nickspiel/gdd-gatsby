@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
-import SEO from '../components/seo'
+import Head from '../components/Head'
 import SearchBar from '../components/SearchBar'
 import ResultsList from '../components/ResultsList'
 import mixpanel from '../services/mixpanel'
@@ -9,14 +9,10 @@ import mixpanel from '../services/mixpanel'
 const GlobalStyles = createGlobalStyle`
   html {
     height: 100%;
+    box-sizing: border-box;
   }
 
   body {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
     margin: 0;
     background-color: black;
     color: white;
@@ -24,11 +20,25 @@ const GlobalStyles = createGlobalStyle`
     text-align: center;
     font-family: sans-serif;
     padding: 2vw;
+    text-transform: uppercase;
   }
 
   * {
     box-sizing: border-box;
   }
+
+  img {
+    max-width: 100%;
+  }
+`
+
+const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow-y: auto;
 `
 
 const IndexPage = () => {
@@ -38,21 +48,23 @@ const IndexPage = () => {
   mixpanel.track('load');
 
   return (
-    <div>
+    <Main>
       <GlobalStyles />
-      <SEO title="Search" />
+      <Head title="Search" />
       <SearchBar
         query={query}
         setQuery={setQuery}
         setResults={setResults}
         results={results}
       />
-      <ResultsList
-        results={results}
-        query={query}
-        setResults={setResults}
-      />
-    </div>
+      {!!results.length &&
+        <ResultsList
+          results={results}
+          query={query}
+          setResults={setResults}
+        />
+      }
+    </Main>
   )
 }
 

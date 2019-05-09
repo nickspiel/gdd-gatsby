@@ -31,7 +31,6 @@ const Button = styled.button`
 
 const SearchBar = ({ query }) => {
   const copyGif = (response) => {
-    
     copy(imageElementString(response.data.images.original.gif_url, query));
   }
   const getRandom = () => {

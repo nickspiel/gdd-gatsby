@@ -9,8 +9,8 @@ import Loader from './Loader'
 import QuickSearch from './QuickSearch'
 
 const List = styled.ul`
-  margin: 0 0 2rem 0;
-  padding: 3vw;
+  margin: 0 auto 2rem;
+  padding: 0;
   line-height: 0;
   list-style: none;
   box-sizing: border-box;
@@ -120,9 +120,11 @@ const ResultsList = ({ results = [], setResults, query }) => {
       container: 'ul',
       packed:    'data-packed',        // if not prefixed with 'data-', it will be added
       sizes:  [
-        { columns: 4, gutter: 20 },                   // assumed to be mobile, because of the missing mq property
-        { mq: '768px', columns: 5, gutter: 30 },
-        { mq: '1024px', columns: 6, gutter: 30 }
+        { columns: 1, gutter: 20 },                   // assumed to be mobile, because of the missing mq property
+        { mq: '420px', columns: 2, gutter: 25 },
+        { mq: '768px', columns: 3, gutter: 30 },
+        { mq: '960px', columns: 4, gutter: 30 },
+        { mq: '1160px', columns: 5, gutter: 30 },
       ]
     })
     instance
@@ -133,7 +135,7 @@ const ResultsList = ({ results = [], setResults, query }) => {
   })
 
   return (
-    <div>
+    <>
       {!!results.length && <QuickSearch query={query} />}
       <List>
         {results.map(({ url, originalUrl, width, height }) => (
@@ -148,7 +150,7 @@ const ResultsList = ({ results = [], setResults, query }) => {
         ))}
       </List>
       {results.length !== 0 && <MoreButton onClick={loadMoreResults} type="button">{loading ? 'Loading' : 'Moar'}</MoreButton>}
-    </div>
+    </>
   )
 }
 
