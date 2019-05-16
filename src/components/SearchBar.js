@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { search } from '../services/gif'
 import logoOpen from '../images/logo-open.svg'
 import logoClose from '../images/logo-close.svg'
+import mixpanel from '../services/mixpanel'
 
 const Form = styled.form`
   display: flex;
