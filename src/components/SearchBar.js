@@ -12,6 +12,10 @@ const Form = styled.form`
   margin: 0 4vw;
 `
 
+const Label = styled.label`
+  display: none;
+`
+
 const Input = styled.input`
   width: auto;
   height: 3rem;
@@ -52,13 +56,16 @@ const SearchBar = ({ query, setQuery, setResults }) => {
   const fetchResults = (event) => {
     search(query, [], setResults)
 
+    mixpanel.track('search', { query })
+
     event.preventDefault()
   }
 
   return (
     <Form onSubmit={fetchResults} >
       <LogoOpen src={logoOpen} alt="" />
-      <Input autoFocus onChange={(event) => setQuery(event.target.value) } />
+      <Label htmlFor="search">Search</Label>
+      <Input name="search" id="search" autoFocus onChange={(event) => setQuery(event.target.value) } />
       <LogoClose src={logoClose} alt="" />
     </Form>
   )
