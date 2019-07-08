@@ -19,7 +19,7 @@ const Label = styled.label`
 
 const Input = styled.input`
   width: auto;
-  height: 3rem;
+  min-height: 3rem;
   border: none;
   border-bottom: solid #111111 2px;
   font-size: 4vw;
