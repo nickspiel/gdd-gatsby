@@ -4,6 +4,7 @@ import styled, { createGlobalStyle } from 'styled-components'
 import Head from '../components/Head'
 import SearchBar from '../components/SearchBar'
 import ResultsList from '../components/ResultsList'
+import Attribution from '../components/Attribution'
 import mixpanel from '../services/mixpanel'
 
 const GlobalStyles = createGlobalStyle`
@@ -64,6 +65,7 @@ const IndexPage = () => {
           setResults={setResults}
         />
       }
+      <Attribution />
     </Main>
   )
 }
