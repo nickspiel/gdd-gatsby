@@ -1,11 +1,11 @@
-import React, { useState } from "react"
-import styled, { createGlobalStyle } from "styled-components"
+import React, { useState } from 'react'
+import styled, { createGlobalStyle } from 'styled-components'
 
-import Head from "../components/Head"
-import SearchBar from "../components/SearchBar"
-import ResultsList from "../components/ResultsList"
-import Attribution from "../components/Attribution"
-import mixpanel from "../services/mixpanel"
+import Head from '../components/Head'
+import SearchBar from '../components/SearchBar'
+import ResultsList from '../components/ResultsList'
+import Attribution from '../components/Attribution'
+import mixpanel from '../services/mixpanel'
 
 const GlobalStyles = createGlobalStyle`
   html {
@@ -43,10 +43,10 @@ const Main = styled.main`
 `
 
 const IndexPage = () => {
-  const [query, setQuery] = useState("")
+  const [query, setQuery] = useState('')
   const [results, setResults] = useState([])
 
-  mixpanel.track("load")
+  mixpanel.track('load')
 
   return (
     <Main>

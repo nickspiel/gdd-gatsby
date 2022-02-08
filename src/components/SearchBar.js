@@ -28,7 +28,7 @@ const Input = styled.input`
   text-align: center;
   text-transform: uppercase;
   margin: 0 1rem;
-  caret-color: #74FAA2;
+  caret-color: #74faa2;
   width: 30vw;
   max-width: 25rem;
   &:focus {
@@ -54,7 +54,7 @@ const LogoClose = styled.img`
 `
 
 const SearchBar = ({ query, setQuery, setResults }) => {
-  const fetchResults = (event) => {
+  const fetchResults = event => {
     search(query, [], setResults)
 
     mixpanel.track('search', { query })
@@ -63,10 +63,15 @@ const SearchBar = ({ query, setQuery, setResults }) => {
   }
 
   return (
-    <Form onSubmit={fetchResults} >
+    <Form onSubmit={fetchResults}>
       <LogoOpen src={logoOpen} alt="" />
       <Label htmlFor="search">Search</Label>
-      <Input name="search" id="search" autoFocus onChange={(event) => setQuery(event.target.value) } />
+      <Input
+        name="search"
+        id="search"
+        autoFocus
+        onChange={event => setQuery(event.target.value)}
+      />
       <LogoClose src={logoClose} alt="" />
     </Form>
   )

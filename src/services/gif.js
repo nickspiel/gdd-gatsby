@@ -1,19 +1,19 @@
-import { GiphyFetch } from "@giphy/js-fetch-api"
+import { GiphyFetch } from '@giphy/js-fetch-api'
 
-const API_KEY = "igoGAnk3G8HAONTJyhckH7N0KaSRhiTD"
+const API_KEY = 'igoGAnk3G8HAONTJyhckH7N0KaSRhiTD'
 const client = new GiphyFetch(API_KEY)
 
-export const random = (query = "", rating = "") =>
+export const random = (query = '', rating = '') =>
   client.random({
-    type: "gifs",
+    type: 'gifs',
     tag: query,
     rating: rating,
   })
 
-export const search = (query = "", results = [], callback) =>
+export const search = (query = '', results = [], callback) =>
   client
     .search(query, {
-      type: "gifs",
+      type: 'gifs',
       offset: results.length,
     })
     .then(response => {

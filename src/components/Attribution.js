@@ -1,6 +1,6 @@
-import React from "react"
-import { StaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import React from 'react'
+import { StaticQuery, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -21,7 +21,9 @@ const Attribution = () => (
           }
         }
       `}
-      render={data => <Img fixed={data.placeholderImage.childImageSharp.fixed} />}
+      render={data => (
+        <Img fixed={data.placeholderImage.childImageSharp.fixed} />
+      )}
     />
   </Wrapper>
 )

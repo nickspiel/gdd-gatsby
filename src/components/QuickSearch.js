@@ -1,10 +1,10 @@
-import React from "react"
-import PropTypes from "prop-types"
-import styled from "styled-components"
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
-import { copy, imageElementString } from "../services/clipboard"
-import { random } from "../services/gif"
-import mixpanel from "../services/mixpanel"
+import { copy, imageElementString } from '../services/clipboard'
+import { random } from '../services/gif'
+import mixpanel from '../services/mixpanel'
 
 const Wrapper = styled.div`
   margin: 2rem 0;
@@ -40,18 +40,18 @@ const SearchBar = ({ query }) => {
     copy(imageElementString(response.data.images.original.url, query))
   }
   const getRandom = () => {
-    mixpanel.track("random")
-    random(query, "pg-13").then(copyGif)
+    mixpanel.track('random')
+    random(query, 'pg-13').then(copyGif)
   }
 
   const getRiskyRandom = () => {
-    mixpanel.track("risky random")
+    mixpanel.track('risky random')
     random(query).then(copyGif)
   }
 
   const getExtraRiskyRandom = () => {
-    mixpanel.track("extra risky random")
-    random(query, "r").then(copyGif)
+    mixpanel.track('extra risky random')
+    random(query, 'r').then(copyGif)
   }
 
   return (
