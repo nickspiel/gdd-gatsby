@@ -46,7 +46,7 @@ const IndexPage = () => {
   const [query, setQuery] = useState('')
   const [results, setResults] = useState([])
 
-  mixpanel.track('load');
+  mixpanel.track('load')
 
   return (
     <Main>
@@ -58,13 +58,9 @@ const IndexPage = () => {
         setResults={setResults}
         results={results}
       />
-      {!!results.length &&
-        <ResultsList
-          results={results}
-          query={query}
-          setResults={setResults}
-        />
-      }
+      {!!results.length && (
+        <ResultsList results={results} query={query} setResults={setResults} />
+      )}
       <Attribution />
     </Main>
   )

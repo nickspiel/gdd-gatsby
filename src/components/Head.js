@@ -64,10 +64,9 @@ function Head({ description, lang, meta, title }) {
           name: `viewport`,
           content: `initial-scale=1.0, width=device-width`,
         },
-      ]
-        .concat(meta)}
+      ].concat(meta)}
       link={[
-        { rel: `icon`, type: `image/x-icon`, href: `/images/favicon.ico` }
+        { rel: `icon`, type: `image/x-icon`, href: `/images/favicon.ico` },
       ]}
     />
   )

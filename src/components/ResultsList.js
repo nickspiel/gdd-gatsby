@@ -31,16 +31,16 @@ const ListItem = styled.li`
     color: #111111;
   }
   &:nth-child(4n + 1) {
-    color: #74FAA2;
+    color: #74faa2;
   }
   &:nth-child(4n + 2) {
-    color: #5ACAFA;
+    color: #5acafa;
   }
   &:nth-child(4n + 3) {
-    color: #8C43F6;
+    color: #8c43f6;
   }
   &:nth-child(4n + 4) {
-    color: #ED706B;
+    color: #ed706b;
   }
 `
 
@@ -89,9 +89,9 @@ const MoreButton = styled.button`
   height: 4rem;
   padding: 0 1rem;
   border: none;
-  color: #74FAA2;
-  border: solid 1px #74FAA2;
-  box-shadow: 2px 2px 0 0 #74FAA2;
+  color: #74faa2;
+  border: solid 1px #74faa2;
+  box-shadow: 2px 2px 0 0 #74faa2;
   font-size: inherit;
   text-transform: uppercase;
   margin-bottom: 3vw;
@@ -101,13 +101,13 @@ const MoreButton = styled.button`
   }
   &:active {
     transform: translate(2px, 2px);
-    box-shadow: 0 0 0 0 #74FAA2;
+    box-shadow: 0 0 0 0 #74faa2;
   }
 `
 
 const ResultsList = ({ results = [], setResults, query }) => {
   const [loading, setLoading] = useState(false)
-  const appendResults = (resultUrls) => {
+  const appendResults = resultUrls => {
     setResults([...results, ...resultUrls])
   }
   const loadMoreResults = () => {
@@ -118,20 +118,17 @@ const ResultsList = ({ results = [], setResults, query }) => {
   useEffect(() => {
     instance = Bricks({
       container: 'ul',
-      packed:    'data-packed',        // if not prefixed with 'data-', it will be added
-      sizes:  [
-        { columns: 1, gutter: 20 },                   // assumed to be mobile, because of the missing mq property
+      packed: 'data-packed', // if not prefixed with 'data-', it will be added
+      sizes: [
+        { columns: 1, gutter: 20 }, // assumed to be mobile, because of the missing mq property
         { mq: '420px', columns: 2, gutter: 25 },
         { mq: '768px', columns: 3, gutter: 30 },
         { mq: '960px', columns: 4, gutter: 30 },
         { mq: '1160px', columns: 5, gutter: 30 },
-      ]
+      ],
     })
-    instance
-      .on('pack',   () => setLoading(false))
-    instance
-      .resize(true)
-      .pack()
+    instance.on('pack', () => setLoading(false))
+    instance.resize(true).pack()
   })
 
   return (
@@ -139,17 +136,38 @@ const ResultsList = ({ results = [], setResults, query }) => {
       {!!results.length && <QuickSearch query={query} />}
       <List>
         {results.map(({ url, originalUrl, width, height }) => (
-          <ListItem key={url} style={{ width: `${width}px`, height: `${height}px` }}>
+          <ListItem
+            key={url}
+            style={{ width: `${width}px`, height: `${height}px` }}
+          >
             <Loader loading={loading} />
-            <Image width={width} height={height} alt="" loading="lazy" src={url} />
+            <Image
+              width={width}
+              height={height}
+              alt=""
+              loading="lazy"
+              src={url}
+            />
             <CopyOptions>
-              <CopyButton onClick={() => copy(imageElementString(originalUrl, query))}>IMG</CopyButton>
-              <CopyButton onClick={() => copy(markdownString(originalUrl, query))}>MD</CopyButton>
+              <CopyButton
+                onClick={() => copy(imageElementString(originalUrl, query))}
+              >
+                IMG
+              </CopyButton>
+              <CopyButton
+                onClick={() => copy(markdownString(originalUrl, query))}
+              >
+                MD
+              </CopyButton>
             </CopyOptions>
           </ListItem>
         ))}
       </List>
-      {results.length !== 0 && <MoreButton onClick={loadMoreResults} type="button">{loading ? 'Loading' : 'Moar'}</MoreButton>}
+      {results.length !== 0 && (
+        <MoreButton onClick={loadMoreResults} type="button">
+          {loading ? 'Loading' : 'Moar'}
+        </MoreButton>
+      )}
     </>
   )
 }
@@ -160,4 +178,4 @@ ResultsList.propTypes = {
   results: PropTypes.arrayOf(PropTypes.string),
 }
 
-export default ResultsList 
+export default ResultsList
